@@ -1,7 +1,8 @@
-def fibo(n):
-    if n < 0: return "Không hợp lệ"
+memo = {}
+def fibo_fast(n):
+    if n in memo: return memo[n]
     if n <= 1: return n
-    return fibo(n-1) + fibo(n-2)
+    memo[n] = fibo_fast(n-1) + fibo_fast(n-2)
+    return memo[n]
 
-n = 10
-print(f"Số Fibonacci thứ {n} là: {fibo(n)}")
+print(fibo_fast(100))
